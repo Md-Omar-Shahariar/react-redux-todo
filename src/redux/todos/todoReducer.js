@@ -1,6 +1,7 @@
 import {
   ADDED,
   ALLCOMPLETED,
+  CLEARCOMPLETED,
   COLORSELECTED,
   DELETED,
   TOGGLED,
@@ -53,8 +54,12 @@ const todoReducer = (state = initialState, action) => {
           completed: true,
         };
       });
+    case CLEARCOMPLETED:
+      return state.filter((todo) => !todo.completed);
 
     default:
-      break;
+      return state;
   }
 };
+
+export default todoReducer;
