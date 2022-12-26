@@ -1,4 +1,4 @@
-import { ADDED, COLORSELECTED, TOGGLED } from "./actionType";
+import { ADDED, COLORSELECTED, DELETED, TOGGLED } from "./actionType";
 import { initialState } from "./initialState";
 
 const nextTodoId = (todos) => {
@@ -38,6 +38,8 @@ const todoReducer = (state = initialState, action) => {
           color: color,
         };
       });
+    case DELETED:
+      return state.filter((todo) => todo.id !== todoId);
     default:
       break;
   }
