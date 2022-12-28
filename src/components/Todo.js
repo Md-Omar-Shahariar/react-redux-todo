@@ -28,22 +28,20 @@ const Todo = ({ todo }) => {
       <div class="select-none flex-1 line-through">{text}</div>
 
       <div
-        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer ${
-          color === "green" &&
-          "border-green-500 hover:bg-green-500 bg-green-500"
+        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${
+          color === "green" && "bg-green-500"
         }`}
       ></div>
 
       <div
-        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer ${
-          color === "yellow" &&
-          "border-yellow-500 hover:bg-yellow-500 bg-yellow-500"
+        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-yellow-500 hover:bg-yellow-500 ${
+          color === "yellow" && "bg-yellow-500"
         }`}
       ></div>
 
       <div
-        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer ${
-          color === "red" && "border-red-500 hover:bg-red-500 bg-red-500"
+        class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-red-500 hover:bg-red-500${
+          color === "red" && " bg-red-500"
         }`}
       ></div>
 
