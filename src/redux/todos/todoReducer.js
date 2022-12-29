@@ -35,8 +35,9 @@ const todoReducer = (state = initialState, action) => {
       });
     case COLORSELECTED:
       const { todoId, color } = action.payload;
+
       return state.map((todo) => {
-        if (todo.id !== action.payload) {
+        if (todo.id !== todoId) {
           return todo;
         }
 

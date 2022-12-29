@@ -1,13 +1,17 @@
 import React from "react";
 import cancel from "../images/cancel.png";
 import { useDispatch } from "react-redux";
-import { toggled } from "../redux/todos/action";
+import { colorSelected, toggled } from "../redux/todos/action";
 
 const Todo = ({ todo }) => {
   const { text, id, completed, color } = todo;
+
   const dispatch = useDispatch();
   const handleStatusChange = (todoId) => {
     dispatch(toggled(todoId));
+  };
+  const handleColorChange = (todoId, color) => {
+    dispatch(colorSelected(todoId, color));
   };
   return (
     <div class="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
@@ -38,15 +42,18 @@ const Todo = ({ todo }) => {
         class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${
           color === "green" && "bg-green-500"
         }`}
+        onClick={() => handleColorChange(id, "green")}
       ></div>
 
       <div
+        onClick={() => handleColorChange(id, "yellow")}
         class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-yellow-500 hover:bg-yellow-500 ${
           color === "yellow" && "bg-yellow-500"
         }`}
       ></div>
 
       <div
+        onClick={() => handleColorChange(id, "red")}
         class={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-red-500 hover:bg-red-500${
           color === "red" && " bg-red-500"
         }`}
