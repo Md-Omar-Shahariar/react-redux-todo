@@ -1,9 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const todos = useSelector((state) => state.todos);
+  const todosRemaining = todos.filter((todo) => !todo.completed).length;
   return (
     <div class="mt-4 flex justify-between text-xs text-gray-500">
-      <p>2 tasks left</p>
+      <p>
+        {todosRemaining < 1
+          ? "No task"
+          : todosRemaining < 2
+          ? todosRemaining + " task"
+          : todosRemaining + " tasks"}{" "}
+        left
+      </p>
       <ul class="flex space-x-1 items-center text-xs">
         <li class="cursor-pointer font-bold">All</li>
         <li>|</li>
