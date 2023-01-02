@@ -4,6 +4,7 @@ import {
   CLEARCOMPLETED,
   COLORSELECTED,
   DELETED,
+  LOADED,
   TOGGLED,
 } from "./actionType";
 import { initialState } from "./initialState";
@@ -24,6 +25,8 @@ const todoReducer = (state = initialState, action) => {
           completed: false,
         },
       ];
+    case LOADED:
+      return [...state, ...action.payload];
     case TOGGLED:
       return state.map((todo) => {
         if (todo.id !== action.payload) {
