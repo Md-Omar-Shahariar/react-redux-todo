@@ -4,6 +4,7 @@ import plus from "../images/plus.png";
 import double_tick from "../images/double-tick.png";
 import { useDispatch } from "react-redux";
 import { added, allCompleted, clearCompleted } from "../redux/todos/action";
+import addTodos from "../redux/todos/thunk/addTodo";
 
 const Header = () => {
   const [input, setInput] = useState("");
@@ -13,7 +14,7 @@ const Header = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(added(input));
+    dispatch(addTodos(input));
     setInput("");
   };
   const completeAll = () => {
