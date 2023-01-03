@@ -1,4 +1,5 @@
 import { loaded, updateText } from "../action";
+import fetchTodos from "./fetchTodos";
 
 const updateTodo = (todoId, todoText) => {
   console.log(todoId, todoText);
@@ -15,9 +16,7 @@ const updateTodo = (todoId, todoText) => {
     const todo = await response.json();
     console.log(todo);
     dispatch(updateText(todo.id, todoText));
-    const response1 = await fetch("http://localhost:9000/todos");
-    const todos = await response1.json();
-    dispatch(loaded(todos));
+    dispatch(fetchTodos);
   };
 };
 export default updateTodo;
