@@ -3,6 +3,7 @@ import cancel from "../images/cancel.png";
 import { useDispatch } from "react-redux";
 import { colorSelected, deleted } from "../redux/todos/action";
 import updateStatus from "../redux/todos/thunk/updateTodosStatus";
+import updateColor from "../redux/todos/thunk/updateColor";
 
 const Todo = ({ todo }) => {
   const { text, id, completed, color } = todo;
@@ -12,7 +13,7 @@ const Todo = ({ todo }) => {
     dispatch(updateStatus(todoId, completed));
   };
   const handleColorChange = (todoId, color) => {
-    dispatch(colorSelected(todoId, color));
+    dispatch(updateColor(todoId, color));
   };
   const handleDelete = (todoId) => {
     dispatch(deleted(todoId));

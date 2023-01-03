@@ -1,11 +1,11 @@
-import { toggled } from "../action";
+import { colorSelected, toggled } from "../action";
 
-const updateStatus = (todoId, currentStatus) => {
+const updateColor = (todoId, color) => {
   return async (dispatch) => {
     const response = await fetch(`http://localhost:9000/todos/${todoId}`, {
       method: "PATCH",
       body: JSON.stringify({
-        completed: !currentStatus,
+        color: color,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -13,7 +13,7 @@ const updateStatus = (todoId, currentStatus) => {
     });
     const todo = await response.json();
     console.log(todo);
-    dispatch(toggled(todo.id));
+    dispatch(colorSelected(todo.id, color));
   };
 };
-export default updateStatus;
+export default updateColor;
