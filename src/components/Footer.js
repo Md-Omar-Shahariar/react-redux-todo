@@ -7,7 +7,7 @@ const Footer = () => {
   const filters = useSelector((state) => state.filter);
   const { status, colors } = filters;
   const dispatch = useDispatch();
-  const todosRemaining = todos.filter((todo) => !todo.completed).length;
+  const todosRemaining = todos?.filter((todo) => !todo?.completed).length;
   const handleStatusChanged = (status) => {
     dispatch(statusChanged(status));
   };

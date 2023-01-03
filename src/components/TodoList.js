@@ -33,7 +33,7 @@ const TodoList = () => {
           return true;
         })
         .map((todo) => (
-          <Todo todo={todo} key={todo.id}></Todo>
+          <Todo todo={todo} key={todo?.id}></Todo>
         ))}
     </div>
   );

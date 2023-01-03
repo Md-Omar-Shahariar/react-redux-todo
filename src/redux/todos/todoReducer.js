@@ -6,6 +6,7 @@ import {
   DELETED,
   LOADED,
   TOGGLED,
+  UPDATETEXT,
 } from "./actionType";
 import { initialState } from "./initialState";
 
@@ -50,6 +51,14 @@ const todoReducer = (state = initialState, action) => {
           ...todo,
           color: color,
         };
+      });
+    case UPDATETEXT:
+      const { id, todoText } = action.payload;
+
+      return state.map((todo) => {
+        if (todo?.id === id) {
+          return { ...todo, text: todoText };
+        }
       });
     case DELETED:
       return state.filter((todo) => todo.id !== action.payload);

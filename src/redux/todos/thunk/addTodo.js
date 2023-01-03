@@ -1,4 +1,4 @@
-import { added } from "../action";
+import { added, loaded } from "../action";
 
 const addTodos = (todoText) => {
   return async (dispatch) => {
@@ -14,6 +14,7 @@ const addTodos = (todoText) => {
     });
     const todo = await response.json();
     dispatch(added(todo.text));
+    dispatch(loaded);
   };
 };
 export default addTodos;
