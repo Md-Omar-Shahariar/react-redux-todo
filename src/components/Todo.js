@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { colorSelected, deleted } from "../redux/todos/action";
 import updateStatus from "../redux/todos/thunk/updateTodosStatus";
 import updateColor from "../redux/todos/thunk/updateColor";
+import deleteTodos from "../redux/todos/thunk/deleteTodo";
 
 const Todo = ({ todo }) => {
   const { text, id, completed, color } = todo;
@@ -16,12 +17,12 @@ const Todo = ({ todo }) => {
     dispatch(updateColor(todoId, color));
   };
   const handleDelete = (todoId) => {
-    dispatch(deleted(todoId));
+    dispatch(deleteTodos(todoId));
   };
   return (
     <div class="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
       <div
-        class={`rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
+        class={`relative rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 ${
           completed && "border-green-500 focus-within:border-green-500"
         }`}
       >
@@ -33,7 +34,7 @@ const Todo = ({ todo }) => {
         />
         {completed && (
           <svg
-            class=" fill-current w-3 h-3 text-green-500 pointer-events-none"
+            class="relative fill-current w-3 h-3 text-green-500 pointer-events-none"
             viewBox="0 0 20 20"
           >
             <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -41,7 +42,7 @@ const Todo = ({ todo }) => {
         )}
       </div>
 
-      <div class={`select-none flex-1 ${todo.completed && "line-through"}`}>
+      <div class={`select-none flex-1 ${completed && "line-through"}`}>
         {text}
       </div>
 
